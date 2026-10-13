@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f5ef">
+  <title>Item Management</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="Stockroom home">
+      <span class="wordmark-mark" aria-hidden="true">S</span>
+      <span>STOCKROOM</span>
+    </a>
+    <span class="topbar-note"><span class="status-dot"></span> Inventory workspace</span>
+  </header>
+
+  <main class="workspace">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">CATALOG / OVERVIEW</p>
+        <h1 id="page-title">Item management</h1>
+        <p class="page-subtitle">Keep your product catalog current.</p>
+      </div>
+      <div class="inventory-total" aria-live="polite">
+        <span class="total-number" id="itemCount">0</span>
+        <span class="total-label">items</span>
+      </div>
+    </section>
+
+    <div class="workspace-grid">
+      <section class="form-panel" aria-labelledby="formTitle">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <h2 id="formTitle">Add an item</h2>
+        </div>
+        <form id="itemForm">
+          <label for="name">Item name <span class="required-mark">*</span></label>
+          <input id="name" name="name" type="text" placeholder="e.g. Field notebook" maxlength="120" required>
+
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="A few details about this item" rows="3"></textarea>
+
+          <label for="price">Price <span class="required-mark">*</span></label>
+          <div class="price-input">
+            <span aria-hidden="true">$</span>
+            <input id="price" name="price" type="number" min="0" step="0.01" placeholder="0.00" required>
+          </div>
+
+          <label class="stock-toggle" for="inStock">
+            <input id="inStock" name="inStock" type="checkbox">
+            <span class="toggle-track" aria-hidden="true"><span></span></span>
+            <span>Available in stock</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button button-primary" id="submitButton" type="submit">Add item <span aria-hidden="true">+</span></button>
+            <button class="button button-quiet" id="cancelEdit" type="button" hidden>Cancel</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="list-panel" aria-labelledby="listTitle">
+        <div class="section-heading list-heading">
+          <div class="section-title-group">
+            <span class="section-index">02</span>
+            <h2 id="listTitle">Your inventory</h2>
+          </div>
+          <span class="list-caption" id="listCaption">LATEST FIRST</span>
+        </div>
+        <div class="item-list" id="itemList" aria-live="polite" aria-busy="true"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
